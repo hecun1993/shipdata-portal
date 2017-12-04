@@ -1,65 +1,73 @@
 <!-- Side-Nav-->
 <aside class="main-sidebar hidden-print">
-  <section class="sidebar">
-    <div class="user-panel">
-      <div class="pull-left image">
-        <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
-      </div>
-      <div class="pull-left info">
-        <p>He Cun</p>
-        <p class="designation">Front-Backend Developer</p>
-      </div>
-    </div>
+	<section class="sidebar">
+		<!--开发者简介-->
+		<div class="user-panel">
+			<!--头像-->
+			<div class="pull-left image">
+				<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+					 alt="User Image">
+			</div>
+
+			<!--名字与简介-->
+			<div class="pull-left info">
+				<p>Developer</p>
+				<p class="designation">Front-Backend Developer</p>
+			</div>
+		</div>
 
     <!-- Sidebar Menu-->
     <ul class="sidebar-menu">
-      <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-      <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>UI Elements</span><i class="fa fa-angle-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="bootstrap-components.html"><i class="fa fa-circle-o"></i> Bootstrap Elements</a></li>
-          <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i> Font Icons</a></li>
-          <li><a href="ui-cards.html"><i class="fa fa-circle-o"></i> Cards</a></li>
-          <li><a href="widgets.html"><i class="fa fa-circle-o"></i> Widgets</a></li>
-        </ul>
-      </li>
-      <li><a href="charts.html"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
-      <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Forms</span><i class="fa fa-angle-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="form-components.html"><i class="fa fa-circle-o"></i> Form Components</a></li>
-          <li><a href="form-custom.html"><i class="fa fa-circle-o"></i> Custom Components</a></li>
-          <li><a href="form-samples.html"><i class="fa fa-circle-o"></i> Form Samples</a></li>
-          <li><a href="form-notifications.html"><i class="fa fa-circle-o"></i> Form Notifications</a></li>
-        </ul>
-      </li>
-      <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Tables</span><i class="fa fa-angle-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="table-basic.html"><i class="fa fa-circle-o"></i> Basic Tables</a></li>
-          <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Data Tables</a></li>
-        </ul>
-      </li>
-      <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Pages</span><i class="fa fa-angle-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-          <li><a href="page-login.html"><i class="fa fa-circle-o"></i> Login Page</a></li>
-          <li><a href="page-lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen Page</a></li>
-          <li><a href="page-user.html"><i class="fa fa-circle-o"></i> User Page</a></li>
-          <li><a href="page-invoice.html"><i class="fa fa-circle-o"></i> Invoice Page</a></li>
-          <li><a href="page-calendar.html"><i class="fa fa-circle-o"></i> Calendar Page</a></li>
-          <li><a href="page-mailbox.html"><i class="fa fa-circle-o"></i> Mailbox</a></li>
-          <li><a href="page-error.html"><i class="fa fa-circle-o"></i> Error Page</a></li>
-        </ul>
-      </li>
-      <li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Level One</a></li>
-          <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i><span> Level One</span><i class="fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Level Two</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i><span> Level Two</span></a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
+
+		<!--1. 主页-->
+		<li class="active">
+			<a [routerLink]="['/home']">
+				<i class="fa fa-dashboard"></i>
+				<span>Dashboard</span>
+			</a>
+      	</li>
+
+		<!--2. 每条船的基本信息和状态-->
+		<li class="treeview">
+			<a href="">
+				<i class="fa fa-th-list"></i>
+				<span>Ship Status</span>
+				<i class="fa fa-angle-right"></i>
+			</a>
+			<ul class="treeview-menu">
+				<li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: '01'}"><i class="fa fa-circle-o"></i> Ship Number 1</a></li>
+				<li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: '02'}"><i class="fa fa-circle-o"></i> Ship Number 2</a></li>
+				<li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: '03'}"><i class="fa fa-circle-o"></i> Ship Number 3</a></li>
+				<li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: '04'}"><i class="fa fa-circle-o"></i> Ship Number 4</a></li>
+				<li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: '05'}"><i class="fa fa-circle-o"></i> Ship Number 5</a></li>
+				<li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: '06'}"><i class="fa fa-circle-o"></i> Ship Number 6</a></li>
+			</ul>
+     	</li>
+
+		<!--3. 监控数据的展示-->
+		<li>
+			<a [routerLink]="['/monitor']">
+				<i class="fa fa-laptop"></i>
+				<span>Monitor Data</span>
+			</a>
+		</li>
+
+		<!--4. 上传txt监控数据文件-->
+		<li class="treeview">
+			<a [routerLink]="['/upload']">
+				<i class="fa fa-file-text"></i>
+				<span>Upload Files</span>
+			</a>
+		</li>
+
+		<!--5. 用户管理-->
+		<li class="treeview">
+			<a [routerLink]="['/user']">
+				<i class="fa fa-th-list"></i>
+				<span>User Management</span>
+			</a>
+		</li>
+
+	</ul>
   </section>
 </aside>

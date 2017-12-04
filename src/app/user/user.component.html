@@ -1,3 +1,121 @@
-<p>
-  user works!
-</p>
+<div class="page-title">
+	<div>
+		<h1><i class="fa fa-edit"></i> User Management</h1>
+		<p>User add or update operation.</p>
+	</div>
+
+	<div>
+		<ul class="breadcrumb">
+			<li><i class="fa fa-home fa-lg"></i></li>
+			<li>User</li>
+			<li><a [routerLink]="['/user']">User Management</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+			<h3 class="card-title">User Table</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Email</th>
+						<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operator</th>
+					</tr>
+				</thead>
+				<tbody>
+          <tr *ngFor="let user of userArray">
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.email}}</td>
+            <td>
+              <button class="btn-primary" >
+                <a href="#update" data-toggle="modal" data-target="#update">
+                  <strong style="color: white;">Update</strong>
+                </a>
+              </button>
+              <button class="btn-primary">
+                <a href="#delete" data-toggle="modal" data-target="#delete">
+                  <strong style="color: white;">Delete</strong>
+                </a>
+              </button>
+            </td>
+          </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div id="update" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-title">
+        <h3 class="text-center">Update</h3>
+      </div>
+
+      <div class="modal-body">
+        <form class="form-group" method="post" action="http://z.cn:8080/user/update">
+          <div class="form-group">
+            <label for="updateUsername">Username: </label>
+            <input id="updateUsername" value="" (input)="collectUsername($event)" class="form-control" type="text" placeholder="Please input username..." />
+          </div>
+          <div class="form-group">
+            <label for="updatePassword">Password: </label>
+            <input id="updatePassword" value="" (input)="collectPassword($event)" class="form-control" type="password" placeholder="Please input email...">
+          </div>
+          <div class="form-group">
+            <label for="updateEmail">Email: </label>
+            <input id="updateEmail" value="" (input)="collectEmail($event)" class="form-control" type="email" placeholder="Please input email...">
+          </div>
+          <div class="modal-footer">
+            <button (click)="updateUser(user_name, pass_word, mail)" class="btn btn-success" data-dismiss="modal">Submit</button>
+            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="delete" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-title">
+        <h3 class="text-center">Delete</h3>
+      </div>
+
+      <div class="modal-body">
+        <form class="form-group" method="post" action="">
+          <div class="form-group">
+            <label for="deleteUsername">Username: </label>
+            <input id="deleteUsername" value="" (input)="collectUsername($event)" class="form-control" type="text" placeholder="Please input username to delete..." />
+          </div>
+          <div class="modal-footer">
+            <button (click)="deleteUser(user_name)" class="btn btn-success" data-dismiss="modal">Submit</button>
+            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

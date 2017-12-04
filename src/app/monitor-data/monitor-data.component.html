@@ -1,8 +1,81 @@
-<div>
-  数据
+<div class="page-title">
+  <div>
+    <h1><i class="fa fa-edit"></i> Monitor Data</h1>
+    <p>Every round of the ship data.</p>
+  </div>
+  <div>
+    <ul class="breadcrumb">
+      <li><i class="fa fa-home fa-lg"></i></li>
+      <li>Datas</li>
+      <li><a [routerLink]="['/monitor']">Monitor Data</a></li>
+    </ul>
+  </div>
 </div>
-<ul>
-  <li *ngFor="let monitorData of monitorDatas">
-    {{monitorData.time}}
-  </li>
-</ul>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <h3 class="card-title">Please Input Conditions to check</h3>
+      <hr>
+
+      <form class="form-control" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+
+        <div class="form-group">
+          <label for="shipNumber">Ship Number: </label>
+          <input ngModel name="shipNumber" id="shipNumber" type="text" class="form-control" placeholder="Please input ship number (like 01 to 06)">
+        </div>
+
+        <div class="form-group">
+          <label for="date">Date: </label>
+          <input ngModel name="date" id="date" type="text" class="form-control" placeholder="Please input date (like 2017-12-02)">
+        </div>
+
+        <div class="form-group">
+          <label for="roundId">RoundId: </label>
+          <input ngModel name="roundId" id="roundId" type="text" class="form-control" placeholder="Please input roundId (like 01)">
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-info">Submit</button>
+          &nbsp; &nbsp;
+          <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <!--h3: 系统介绍-->
+      <h3 class="card-title">System Introductions</h3>
+      <hr>
+
+      <p><strong>1. </strong>xxx</p>
+      <p><strong>2. </strong>xxx</p>
+      <p><strong>3. </strong>xxx</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <h4 class="card-title"><span style="color: red;">Ship {{shipNumber}}</span> 's Direction Results in <span style="color: red;">{{date}}</span> of <span style="color: red;">{{roundId}}</span> Round</h4>
+      <div class="embed-responsive embed-responsive-16by9">
+        <div echarts [options]="echartOptionForDirection" class="echartsStyle embed-responsive-item"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="col-md-12">
+    <div class="card">
+      <h4 class="card-title"><span style="color: red;">Ship {{shipNumber}}</span> 's Speed Results in <span style="color: red;">{{date}}</span> of <span style="color: red;">{{roundId}}</span> Round</h4>
+      <div class="embed-responsive embed-responsive-16by9">
+        <div echarts [options]="echartOptionForSpeed" class="echartsStyle embed-responsive-item"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

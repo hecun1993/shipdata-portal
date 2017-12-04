@@ -10,8 +10,10 @@ import {SERVER_URL} from '../config/Constants';
 export class AppComponent {
   title = 'app';
 
-  public url: string = SERVER_URL + '/monitor/upload';
-  public uploader: FileUploader = new FileUploader({url: this.url});
+  // public url: string = SERVER_URL + '/monitor/upload';
+  // public uploader: FileUploader = new FileUploader({url: this.url});
+
+
   // public fileList: any[] = [];
   //
   // constructor() {

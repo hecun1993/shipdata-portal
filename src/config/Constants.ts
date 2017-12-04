@@ -1,1 +1,2 @@
-export const SERVER_URL = 'http://localhost:8080'
+//服务器地址
+export const SERVER_URL = 'http://z.cn:8080';

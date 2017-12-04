@@ -1,60 +1,51 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions, Response} from '@angular/http';
+import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
+import {ApiResponse} from '../model/api.response';
 
 @Injectable()
 export class HttpService {
+
   constructor(private http: Http) {
   }
 
-  public get(url: string, paramObj: any) {
-    // return this.http.get(url + "?roundId=rkNQye3V")
-    console.log(this.toQueryString(paramObj));
+  /**
+   * 无参数的get请求
+   * {withCredentials: true} 带cookie(JSESSIONID)发起请求
+   *
+   * @param {string} url
+   * @returns {Promise<ApiResponse>}
+   */
+  public getWithNoParams(url: string): Promise<ApiResponse> {
+    return this.http.get(url, {withCredentials: true})
+      .map(res => res.json())
+      .toPromise();
+  }
 
+  public get(url: string, paramObj: any): Promise<ApiResponse> {
     return this.http.get(url + this.toQueryString(paramObj))
-      .toPromise()
-      .then(res => this.handlerSuccess(res.json()))
-      .catch(error => this.handlerError(error));
+      .map(res => res.json())
+      .toPromise();
   }
 
   public post(url: string, paramObj: any) {
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     return this.http.post(url, this.toBodyString(paramObj), new RequestOptions({headers: headers}))
+      .map(res => res.json())
       .toPromise()
-      .then(res => this.handlerSuccess(res.json()))
-      .catch(error => this.handlerError(error));
   }
 
   public postBody(url: string, paramObj: any) {
     let headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(url, paramObj, new RequestOptions({headers: headers}))
+      .map(res => res.json())
       .toPromise()
-      .then(res => this.handlerSuccess(res.json()))
-      .catch(error => this.handlerError(error));
   }
 
-  private handlerSuccess(result: any) {
-    if (result && result.code == 0) {
-      console.log(result.data);
-      return result.data;
-    }
-  }
-
-  private handlerError(error: Response | any) {
-    let msg = '请求失败';
-    if (error.code == 10) {
-      msg = 'error!';
-    }
-    if (error.code == 11) {
-      msg = 'user not exist!';
-    }
-    if (error.code == 12) {
-      msg = 'data file error!';
-    }
-    if (error.code == 13) {
-      msg = 'batch job error!';
-    }
-    return {success: false, msg: msg};
+  public delete(url: string, paramObj: any): Promise<ApiResponse> {
+    return this.http.delete(url + this.toQueryString(paramObj))
+      .map(res => res.json())
+      .toPromise();
   }
 
   /**
@@ -115,14 +106,4 @@ export class HttpService {
     }
     return ret.join('&');
   }
-}
-
-export class ApiResponse {
-
-  code: number;
-
-  message: string;
-
-  data: any;
-
 }

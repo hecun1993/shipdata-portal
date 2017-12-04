@@ -1,3 +1,33 @@
-<p>
-  ship works!
-</p>
+<div class="page-title">
+  <div>
+    <h1><i class="fa fa-edit"></i> Ship Number {{shipNumber}}</h1>
+    <p>Basic status of the ship.</p>
+  </div>
+  <div>
+    <ul class="breadcrumb">
+      <li><i class="fa fa-home fa-lg"></i></li>
+      <li>Datas</li>
+      <li><a [routerLink]="['/ship']" [queryParams]="{shipNumber: shipNumber}">Ship {{shipNumber}} status</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="col-md-6">
+    <div class="card">
+      <h4 class="card-title">Ship {{shipNumber}}</h4>
+      <img class="shipImage" src="{{shipImage}}" alt="ship image" />
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <h4 class="card-title">Basic Information</h4>
+      <hr>
+
+      <p><strong>Date: </strong></p>
+      <p><strong>Features: </strong></p>
+      <p><strong>Athlete: </strong></p>
+    </div>
+  </div>
+</div>
