@@ -20,8 +20,10 @@ export class ShipComponent implements OnInit {
   constructor(private httpService: HttpService,
               private activatedRoute: ActivatedRoute,
               private http: Http) {
-    this.dataSource = this.http.get(SERVER_URL + '/ship/all')
-      .map(res => res.json());
+    this.httpService.getWithNoParams(SERVER_URL + '/ship/all')
+      .then(response => {
+        this.dataSource = response.data;
+      })
   }
 
   ngOnInit() {

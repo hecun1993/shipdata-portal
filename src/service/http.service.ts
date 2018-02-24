@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
-import 'rxjs/Rx';
 import {ApiResponse} from '../model/api.response';
 
 @Injectable()
@@ -18,34 +17,39 @@ export class HttpService {
    */
   public getWithNoParams(url: string): Promise<ApiResponse> {
     return this.http.get(url, {withCredentials: true})
-      .map(res => res.json())
-      .toPromise();
+      .toPromise().then(response => {
+        return response.json();
+      })
   }
 
   public get(url: string, paramObj: any): Promise<ApiResponse> {
     return this.http.get(url + this.toQueryString(paramObj))
-      .map(res => res.json())
-      .toPromise();
+      .toPromise().then(response => {
+        return response.json();
+      })
   }
 
   public post(url: string, paramObj: any) {
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     return this.http.post(url, this.toBodyString(paramObj), new RequestOptions({headers: headers}))
-      .map(res => res.json())
-      .toPromise()
+      .toPromise().then(response => {
+        return response.json();
+      })
   }
 
   public postBody(url: string, paramObj: any) {
     let headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(url, paramObj, new RequestOptions({headers: headers}))
-      .map(res => res.json())
-      .toPromise()
+      .toPromise().then(response => {
+        return response.json();
+      })
   }
 
   public delete(url: string, paramObj: any): Promise<ApiResponse> {
     return this.http.delete(url + this.toQueryString(paramObj))
-      .map(res => res.json())
-      .toPromise();
+      .toPromise().then(response => {
+        return response.json();
+      })
   }
 
   /**
